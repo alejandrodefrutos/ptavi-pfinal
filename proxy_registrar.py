@@ -64,7 +64,8 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
                         database.write(str(element) + " ")
                     database.write('\r\n')
                 log = open(path_log, 'a')
-                LineaLog = time.strftime('%Y%m%d%H%M%S') + 'Received from ' + self.client_address[0] +\
+                LineaLog = time.strftime('%Y%m%d%H%M%S') +\
+                    'Received from ' + self.client_address[0] +\
                     ':' + str(self.client_address[1])
                 log.write(LineaLog.replace('\r\n', ' ') + '\r\n')
                 print 'Received from ' + self.client_address[0] +\
@@ -82,7 +83,8 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
             elif lineascliente[0] == 'INVITE':
                 name = lineascliente[1].split(':')[1]
                 log = open(path_log, 'a')
-                LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Received from ' + self.client_address[0] +\
+                LineaLog = time.strftime('%Y%m%d%H%M%S') +\
+                    ' Received from ' + self.client_address[0] +\
                     ':' + str(self.client_address[1]) + ' ' +\
                     linearecibida.replace('\r\n', ' ')
                 log.write(LineaLog.replace('\r\n', ' ') + '\r\n')
@@ -139,19 +141,23 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
 
                             lineaservidor = data.split('\r\n')
                             log = open(path_log, 'a')
-                            LineaLog = time.strftime('%Y%m%d%H%M%S') + 'Received from ' + \
+                            LineaLog = time.strftime('%Y%m%d%H%M%S') +\
+                                'Received from ' + \
                                 str(d_usuarios[name][0]) +\
-                                ':' + d_usuarios[name][1] + ' ' + data.replace('\r\n', ' ') + \
+                                ':' + d_usuarios[name][1] + ' ' +\
+                                data.replace('\r\n', ' ') + \
                                 '\r\n'
                             registro = time.strftime('%Y%m%d%H%M%S') +\
                                 ' ' + LineaLog.replace('\r\n', ' ') + '\r\n'
                             log.write(registro)
-                            print 'Received from ' + str(d_usuarios[name][0]) + \
+                            print 'Received from ' +\
+                                str(d_usuarios[name][0]) + \
                                 ':' + d_usuarios[name][1] + ' ' + '\r\n' + data
                             self.wfile.write(data)
 
                             LineaLog = 'Sent to ' + self.client_address[0] +\
-                                ':' + str(self.client_address[1]) + ' ' + data.replace('\r\n', ' ') + \
+                                ':' + str(self.client_address[1]) + ' ' +\
+                                data.replace('\r\n', ' ') + \
                                 '\r\n'
                             registro = time.strftime('%Y%m%d%H%M%S') + \
                                 ' ' + LineaLog.replace('\r\n', ' ') + '\r\n'
@@ -282,7 +288,8 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
                         lineaservidor = data.split('\r\n')
                         if lineaservidor[0] == 'SIP/2.0 200 OK':
                             log = open(path_log, 'a')
-                            LineaLog = 'Received from ' + str(d_usuarios[name][0]) +\
+                            LineaLog = 'Received from ' +\
+                                str(d_usuarios[name][0]) +\
                                 ':' + d_usuarios[name][1] + ' ' +\
                                 data.replace('\r\n', ' ') + '\r\n'
                             registro = time.strftime('%Y%m%d%H%M%S') +\
@@ -291,8 +298,10 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
                             print 'Received from ' + str(d_usuarios[name][0]) +\
                                 ':' + d_usuarios[name][1] + '\r\n' + data
                             self.wfile.write(data)
-                            LineaLog = 'Sent to ' + self.client_address[0] + ':' +\
-                                str(self.client_address[1]) + ' ' + data.replace('\r\n', ' ') +\
+                            LineaLog = 'Sent to ' +\
+                                self.client_address[0] + ':' +\
+                                str(self.client_address[1]) + ' ' +\
+                                data.replace('\r\n', ' ') +\
                                 '\r\n'
                             registro = time.strftime('%Y%m%d%H%M%S') +\
                                 ' ' + LineaLog.replace('\r\n', ' ') + '\r\n'

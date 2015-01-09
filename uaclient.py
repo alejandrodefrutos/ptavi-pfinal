@@ -68,7 +68,8 @@ if __name__ == "__main__":
     log.write(time.strftime('%Y%m%d%H%M%S') + ' ' + 'Starting...\r\n')
 
     if method == 'REGISTER':
-        LineaEnvio = 'REGISTER sip:' + name + ':' + puerto_server + ' SIP/2.0\r\n' +\
+        LineaEnvio = 'REGISTER sip:' + name + ':' +\
+            puerto_server + ' SIP/2.0\r\n' +\
             'Expires: ' + option + '\r\n'
         LineaLog = time.strftime('%Y%m%d%H%M%S') + ' ' + 'Sent to ' +\
             ip_proxy + ':' + puerto_proxy + ' ' +\
@@ -155,7 +156,8 @@ if __name__ == "__main__":
             LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Finishing...\r\n'
             log.write(LineaLog)
     else:
-        LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Received from ' + ip_proxy +\
+        LineaLog = time.strftime('%Y%m%d%H%M%S') +\
+            ' Received from ' + ip_proxy +\
             ':' + puerto_proxy + ' ' + data.replace('\r\n', ' ') + '\r\n'
         log.write(LineaLog)
         print 'Received from ' + ip_proxy +\

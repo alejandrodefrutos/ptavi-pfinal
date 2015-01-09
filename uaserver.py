@@ -131,13 +131,15 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
             elif lineacliente[0] == 'BYE':
                 log = open(path_log, 'a')
                 LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Received from ' +\
-                    self.client_address[0] + ':' + str(self.client_address[1]) + ' ' +\
+                    self.client_address[0] + ':' +\
+                    str(self.client_address[1]) + ' ' +\
                     linearecibida.replace('\r\n', ' ') + '\r\n'
                 print 'Received from ' + self.client_address[0] + ':' +\
                     str(self.client_address[1]) + '\r\n' +\
                     linearecibida.replace('\r\n', ' ') + '\r\n'
 
-                LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Sent to ' + self.client_address[0] +\
+                LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Sent to ' +\
+                    self.client_address[0] +\
                     ':' + str(self.client_address[1]) + ' SIP/2.0 200 OK\r\n'
                 self.wfile.write('SIP/2.0 200 OK\r\n')
                 print 'Sent to ' + self.client_address[0] +\
@@ -167,12 +169,14 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
             else:
                 log = open(path_log, 'a')
                 LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Received from ' +\
-                    self.client_address[0] + ':' + str(self.client_address[1]) + ' ' +\
+                    self.client_address[0] + ':' +\
+                    str(self.client_address[1]) + ' ' +\
                     linearecibida.replace('\r\n', ' ') + '\r\n'
                 print 'Received from ' + self.client_address[0] + ':' +\
                     str(self.client_address[1]) + ' '
 
-                LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Sent to ' + self.client_address[0] +\
+                LineaLog = time.strftime('%Y%m%d%H%M%S') +\
+                    ' Sent to ' + self.client_address[0] +\
                     ':' + str(self.client_address[1]) +\
                     ' SIP/2.0 400 Bad Request\r\n'
                 self.wfile.write('SIP/2.0 400 Bad Request\r\n')
