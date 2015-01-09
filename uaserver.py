@@ -112,7 +112,8 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
                     self.client_address[0] + ':' +\
                     str(self.client_address[1]) + ' \r\n'
                 log.write(LineaLog)
-                print 'Received from ' + self.client_address[0] + ':' + str(self.client_address[1]) +\
+                print 'Received from ' + self.client_address[0] +\
+                    ':' + str(self.client_address[1]) +\
                     ' \r\n' + linearecibida
 
                 PedirPermisos = "chmod +x mp32rtp"
@@ -122,7 +123,8 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
                 print "Vamos a ejecutar", aEjecutar
                 os.system(aEjecutar)
 
-                LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Sent to ' + str(d_sdp['key'][0]) + ':' +\
+                LineaLog = time.strftime('%Y%m%d%H%M%S') + ' Sent to ' +\
+                    str(d_sdp['key'][0]) + ':' +\
                     str(d_sdp['key'][1]) + ' RTP\r\n'
                 log.write(LineaLog)
 

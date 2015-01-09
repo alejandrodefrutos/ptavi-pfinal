@@ -295,7 +295,8 @@ class EchoHandler(SocketServer.DatagramRequestHandler):
                             registro = time.strftime('%Y%m%d%H%M%S') +\
                                 ' ' + LineaLog.replace('\r\n', ' ') + '\r\n'
                             log.write(registro)
-                            print 'Received from ' + str(d_usuarios[name][0]) +\
+                            print 'Received from ' +\
+                                str(d_usuarios[name][0]) +\
                                 ':' + d_usuarios[name][1] + '\r\n' + data
                             self.wfile.write(data)
                             LineaLog = 'Sent to ' +\
